@@ -223,6 +223,43 @@
             font-size: 16px;
             font-weight: 500;
         }
+        .location-picker {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            background-color: white;
+        }
+        .location-icon {
+            color: #007aff;
+            margin-right: 12px;
+            font-size: 18px;
+        }
+        .location-text {
+            flex: 1;
+        }
+        .location-name {
+            font-size: 16px;
+            margin-bottom: 2px;
+        }
+        .location-address {
+            font-size: 13px;
+            color: #8e8e93;
+        }
+        .location-action {
+            color: #8e8e93;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 15px;
+            color: #444;
+        }
     </style>
 </head>
 <body>
@@ -300,7 +337,7 @@
                 </div>
             </div>
             
-            <div class="diary-map">
+            <!-- <div class="diary-map">
                 <div class="map-container">
                     <img src="https://maps.googleapis.com/maps/api/staticmap?center=Kyoto,Japan&zoom=13&size=600x300&maptype=roadmap&markers=color:red%7CKinkaku-ji%7CArashiyama&key=YOUR_API_KEY" class="map-image" alt="京都地图">
                     <div class="map-pin">
@@ -311,6 +348,23 @@
                     <div class="location-name">京都市 金阁寺、岚山</div>
                     <div class="location-action">
                         <i class="fas fa-directions"></i>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- 位置选择 -->
+            <div class="form-group">
+                <label class="form-label">位置</label>
+                <div class="location-picker">
+                    <div class="location-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="location-text">
+                        <div class="location-name">京都市 金阁寺、岚山</div>
+                        <div class="location-address">日本京都府京都市北区金阁寺町1</div>
+                    </div>
+                    <div class="location-action">
+                        <i class="fas fa-chevron-right"></i>
                     </div>
                 </div>
             </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>旅记App原型</title>
+    <title>旅记App原型设计稿</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -20,25 +20,91 @@
         .phone-frame {
             width: 360px;
             height: 780px;
-            background-color: #000;
-            border-radius: 40px;
+            background-color: #1c1c1e;
+            border-radius: 50px;
             padding: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
             margin: 0 auto;
             position: relative;
             overflow: hidden;
+            border: 1px solid #3a3a3c;
         }
         .screen {
             width: 100%;
             height: 100%;
-            border-radius: 30px;
+            border-radius: 40px;
             overflow: hidden;
             background-color: white;
+            position: relative;
         }
         .screen iframe {
             width: 100%;
             height: 100%;
             border: none;
+        }
+        .dynamic-island {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 35px;
+            background-color: #000;
+            border-radius: 20px;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .dynamic-island::before {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #333;
+            border-radius: 50%;
+            left: 25px;
+        }
+        .dynamic-island::after {
+            content: "";
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background-color: #333;
+            border-radius: 50%;
+            right: 25px;
+        }
+        .volume-buttons {
+            position: absolute;
+            left: -2px;
+            top: 120px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .volume-button {
+            width: 4px;
+            height: 30px;
+            background-color: #3a3a3c;
+            border-radius: 2px;
+        }
+        .power-button {
+            position: absolute;
+            right: -2px;
+            top: 150px;
+            width: 4px;
+            height: 40px;
+            background-color: #3a3a3c;
+            border-radius: 2px;
+        }
+        .action-button {
+            position: absolute;
+            right: -2px;
+            top: 220px;
+            width: 4px;
+            height: 10px;
+            background-color: #3a3a3c;
+            border-radius: 2px;
         }
         .screen-title {
             text-align: center;
@@ -85,9 +151,9 @@
 </head>
 <body>
     <div class="container mx-auto my-10">
-        <h1 class="text-4xl font-bold text-center mb-10">旅记App原型</h1>
+        <h1 class="text-4xl font-bold text-center mb-10">旅记App原型设计稿</h1>
         
-        <div class="design-notes">
+        <!-- <div class="design-notes">
             <h3>设计说明</h3>
             <p>本原型采用iOS设计风格，特别参考了iOS"手记"应用的设计语言，以提供简洁、直观的用户体验。</p>
             
@@ -102,23 +168,37 @@
             </ul>
             
             <p>所有页面均已优化，移除了底部导航栏，并重新设计了导航结构，使整体设计更加符合iOS"手记"应用的风格。</p>
-        </div>
+        </div> -->
         
         <h2 class="page-title">旅行管理</h2>
         <div class="prototype-container">
             <div>
                 <div class="screen-title">首页/旅行列表</div>
                 <div class="phone-frame">
+                    <div class="volume-buttons">
+                        <div class="volume-button"></div>
+                        <div class="volume-button"></div>
+                    </div>
+                    <div class="power-button"></div>
+                    <div class="action-button"></div>
                     <div class="screen">
+                        <div class="dynamic-island"></div>
                         <iframe src="home.html"></iframe>
                     </div>
                 </div>
             </div>
             
             <div>
-                <div class="screen-title">旅行详情</div>
+                <div class="screen-title">旅行详情/日记列表</div>
                 <div class="phone-frame">
+                    <div class="volume-buttons">
+                        <div class="volume-button"></div>
+                        <div class="volume-button"></div>
+                    </div>
+                    <div class="power-button"></div>
+                    <div class="action-button"></div>
                     <div class="screen">
+                        <div class="dynamic-island"></div>
                         <iframe src="trip_detail.html"></iframe>
                     </div>
                 </div>
@@ -127,7 +207,14 @@
             <div>
                 <div class="screen-title">创建旅行</div>
                 <div class="phone-frame">
+                    <div class="volume-buttons">
+                        <div class="volume-button"></div>
+                        <div class="volume-button"></div>
+                    </div>
+                    <div class="power-button"></div>
+                    <div class="action-button"></div>
                     <div class="screen">
+                        <div class="dynamic-island"></div>
                         <iframe src="create_trip.html"></iframe>
                     </div>
                 </div>
@@ -136,19 +223,33 @@
         
         <h2 class="page-title">日记功能</h2>
         <div class="prototype-container">
-            <div>
+            <!-- <div>
                 <div class="screen-title">日记列表</div>
                 <div class="phone-frame">
+                    <div class="volume-buttons">
+                        <div class="volume-button"></div>
+                        <div class="volume-button"></div>
+                    </div>
+                    <div class="power-button"></div>
+                    <div class="action-button"></div>
                     <div class="screen">
+                        <div class="dynamic-island"></div>
                         <iframe src="diary_list.html"></iframe>
                     </div>
                 </div>
-            </div>
+            </div> -->
             
             <div>
                 <div class="screen-title">日记详情</div>
                 <div class="phone-frame">
+                    <div class="volume-buttons">
+                        <div class="volume-button"></div>
+                        <div class="volume-button"></div>
+                    </div>
+                    <div class="power-button"></div>
+                    <div class="action-button"></div>
                     <div class="screen">
+                        <div class="dynamic-island"></div>
                         <iframe src="diary_detail.html"></iframe>
                     </div>
                 </div>
@@ -157,7 +258,14 @@
             <div>
                 <div class="screen-title">创建日记</div>
                 <div class="phone-frame">
+                    <div class="volume-buttons">
+                        <div class="volume-button"></div>
+                        <div class="volume-button"></div>
+                    </div>
+                    <div class="power-button"></div>
+                    <div class="action-button"></div>
                     <div class="screen">
+                        <div class="dynamic-island"></div>
                         <iframe src="create_diary.html"></iframe>
                     </div>
                 </div>
@@ -169,7 +277,14 @@
             <div>
                 <div class="screen-title">消费记录</div>
                 <div class="phone-frame">
+                    <div class="volume-buttons">
+                        <div class="volume-button"></div>
+                        <div class="volume-button"></div>
+                    </div>
+                    <div class="power-button"></div>
+                    <div class="action-button"></div>
                     <div class="screen">
+                        <div class="dynamic-island"></div>
                         <iframe src="expense_list.html"></iframe>
                     </div>
                 </div>
@@ -178,7 +293,14 @@
             <div>
                 <div class="screen-title">添加消费</div>
                 <div class="phone-frame">
+                    <div class="volume-buttons">
+                        <div class="volume-button"></div>
+                        <div class="volume-button"></div>
+                    </div>
+                    <div class="power-button"></div>
+                    <div class="action-button"></div>
                     <div class="screen">
+                        <div class="dynamic-island"></div>
                         <iframe src="add_expense.html"></iframe>
                     </div>
                 </div>
@@ -187,7 +309,14 @@
             <div>
                 <div class="screen-title">消费统计</div>
                 <div class="phone-frame">
+                    <div class="volume-buttons">
+                        <div class="volume-button"></div>
+                        <div class="volume-button"></div>
+                    </div>
+                    <div class="power-button"></div>
+                    <div class="action-button"></div>
                     <div class="screen">
+                        <div class="dynamic-island"></div>
                         <iframe src="expense_stats.html"></iframe>
                     </div>
                 </div>
@@ -199,7 +328,14 @@
             <div>
                 <div class="screen-title">旅行地图</div>
                 <div class="phone-frame">
+                    <div class="volume-buttons">
+                        <div class="volume-button"></div>
+                        <div class="volume-button"></div>
+                    </div>
+                    <div class="power-button"></div>
+                    <div class="action-button"></div>
                     <div class="screen">
+                        <div class="dynamic-island"></div>
                         <iframe src="travel_map.html"></iframe>
                     </div>
                 </div>
@@ -208,7 +344,14 @@
             <div>
                 <div class="screen-title">个人中心</div>
                 <div class="phone-frame">
+                    <div class="volume-buttons">
+                        <div class="volume-button"></div>
+                        <div class="volume-button"></div>
+                    </div>
+                    <div class="power-button"></div>
+                    <div class="action-button"></div>
                     <div class="screen">
+                        <div class="dynamic-island"></div>
                         <iframe src="profile.html"></iframe>
                     </div>
                 </div>
