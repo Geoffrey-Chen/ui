@@ -1,0 +1,283 @@
+<!--首页/旅行列表-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旅记 - 我的旅行</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .ios-status-bar {
+            background-color: #fff;
+            height: 44px;
+            padding: 10px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            font-size: 14px;
+        }
+        .ios-nav-bar {
+            height: 83px;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: sticky;
+            bottom: 0;
+            z-index: 10;
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #8e8e93;
+            font-size: 10px;
+            padding: 8px 0;
+        }
+        .nav-item.active {
+            color: #007aff;
+        }
+        .nav-item i {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+        .app-content {
+            flex: 1;
+            overflow-y: auto;
+            padding-bottom: 83px;
+        }
+        .app-header {
+            padding: 16px;
+            background-color: white;
+            font-weight: 600;
+            font-size: 17px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+            position: sticky;
+            top: 44px;
+            z-index: 9;
+        }
+        .fab-button {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            border-radius: 28px;
+            background-color: #007aff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            color: white;
+            font-size: 24px;
+        }
+        .trip-card {
+            background-color: white;
+            border-radius: 12px;
+            margin: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        .trip-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+        .trip-content {
+            padding: 16px;
+        }
+        .trip-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .trip-date {
+            color: #8e8e93;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .trip-stats {
+            display: flex;
+            margin-top: 12px;
+            font-size: 13px;
+            color: #666;
+        }
+        .trip-stat {
+            display: flex;
+            align-items: center;
+            margin-right: 16px;
+        }
+        .trip-stat i {
+            margin-right: 4px;
+            font-size: 14px;
+        }
+        .segment-control {
+            display: flex;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            margin: 10px 16px;
+            overflow: hidden;
+        }
+        .segment-item {
+            flex: 1;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        .segment-item.active {
+            background-color: white;
+            font-weight: 500;
+            color: #007aff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS 状态栏 -->
+    <div class="ios-status-bar">
+        <div>9:41</div>
+        <div class="flex space-x-2">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+    
+    <!-- 页面标题 -->
+    <div class="app-header">我的旅行</div>
+    
+    <!-- 页面内容 -->
+    <div class="app-content">
+        <!-- 分段控制器 -->
+        <div class="segment-control">
+            <div class="segment-item active">全部旅行</div>
+            <div class="segment-item">进行中</div>
+            <div class="segment-item">已完成</div>
+        </div>
+        
+        <!-- 旅行卡片列表 -->
+        <a href="trip_detail.html" class="block">
+            <div class="trip-card">
+                <img src="https://images.unsplash.com/photo-1478860409698-8707f313ee8b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" class="trip-image" alt="日本之旅">
+                <div class="trip-content">
+                    <div class="trip-title">日本关西之旅</div>
+                    <div class="trip-date">2023.10.15 - 2023.10.21</div>
+                    <div class="flex items-center text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-full w-fit">
+                        <i class="fas fa-walking mr-1"></i>
+                        <span>进行中</span>
+                    </div>
+                    <div class="trip-stats">
+                        <div class="trip-stat">
+                            <i class="fas fa-book"></i>
+                            <span>5篇日记</span>
+                        </div>
+                        <div class="trip-stat">
+                            <i class="fas fa-yen-sign"></i>
+                            <span>¥5,280</span>
+                        </div>
+                        <div class="trip-stat">
+                            <i class="fas fa-map-pin"></i>
+                            <span>4个地点</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        
+        <div class="trip-card">
+            <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" class="trip-image" alt="三亚阳光之旅">
+            <div class="trip-content">
+                <div class="trip-title">三亚阳光之旅</div>
+                <div class="trip-date">2023.07.05 - 2023.07.10</div>
+                <div class="flex items-center text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full w-fit">
+                    <i class="fas fa-check mr-1"></i>
+                    <span>已完成</span>
+                </div>
+                <div class="trip-stats">
+                    <div class="trip-stat">
+                        <i class="fas fa-book"></i>
+                        <span>8篇日记</span>
+                    </div>
+                    <div class="trip-stat">
+                        <i class="fas fa-yen-sign"></i>
+                        <span>¥7,650</span>
+                    </div>
+                    <div class="trip-stat">
+                        <i class="fas fa-map-pin"></i>
+                        <span>6个地点</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="trip-card">
+            <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" class="trip-image" alt="巴黎艺术之旅">
+            <div class="trip-content">
+                <div class="trip-title">巴黎艺术之旅</div>
+                <div class="trip-date">2023.05.20 - 2023.05.27</div>
+                <div class="flex items-center text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full w-fit">
+                    <i class="fas fa-check mr-1"></i>
+                    <span>已完成</span>
+                </div>
+                <div class="trip-stats">
+                    <div class="trip-stat">
+                        <i class="fas fa-book"></i>
+                        <span>12篇日记</span>
+                    </div>
+                    <div class="trip-stat">
+                        <i class="fas fa-yen-sign"></i>
+                        <span>¥15,320</span>
+                    </div>
+                    <div class="trip-stat">
+                        <i class="fas fa-map-pin"></i>
+                        <span>8个地点</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 新建旅行按钮 -->
+    <a href="create_trip.html" class="fab-button">
+        <i class="fas fa-plus"></i>
+    </a>
+    
+    <!-- iOS 导航栏 -->
+    <div class="ios-nav-bar">
+        <a href="home.html" class="nav-item active">
+            <i class="fas fa-suitcase"></i>
+            <span>旅行</span>
+        </a>
+        <a href="expense_list.html" class="nav-item">
+            <i class="fas fa-coins"></i>
+            <span>记账</span>
+        </a>
+        <a href="travel_map.html" class="nav-item">
+            <i class="fas fa-map-marked-alt"></i>
+            <span>地图</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>我的</span>
+        </a>
+    </div>
+</body>
+</html>

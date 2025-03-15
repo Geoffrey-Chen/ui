@@ -1,0 +1,337 @@
+<!-- 添加消费 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旅记 - 添加消费</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .ios-status-bar {
+            background-color: #fff;
+            height: 44px;
+            padding: 10px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            font-size: 14px;
+        }
+        .app-header {
+            padding: 0 16px;
+            height: 44px;
+            background-color: white;
+            font-size: 17px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-btn {
+            color: #007aff;
+            font-weight: 500;
+        }
+        .header-title {
+            font-weight: 600;
+            text-align: center;
+            flex: 1;
+        }
+        .app-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+        }
+        .amount-input-container {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        .amount-label {
+            color: #8e8e93;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .amount-input {
+            display: flex;
+            align-items: center;
+            font-size: 36px;
+            font-weight: 600;
+        }
+        .currency-symbol {
+            margin-right: 5px;
+        }
+        #amount {
+            border: none;
+            outline: none;
+            font-size: 36px;
+            font-weight: 600;
+            width: 100%;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .input-row {
+            display: flex;
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 50px;
+            border: 1px solid #e0e0e0;
+        }
+        .input-icon {
+            width: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #8e8e93;
+        }
+        .input-field {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 0 10px;
+            font-size: 16px;
+        }
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .category {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+        .category-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 8px;
+            color: white;
+        }
+        .category-name {
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+        }
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .payment-method {
+            flex: 1;
+            min-width: calc(50% - 10px);
+            background-color: white;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            font-size: 14px;
+        }
+        .payment-method.active {
+            border-color: #007aff;
+            background-color: #e1f0ff;
+            color: #007aff;
+        }
+        .date-time-picker {
+            display: flex;
+            gap: 10px;
+        }
+        .date-picker, .time-picker {
+            flex: 1;
+            background-color: white;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            padding: 10px 15px;
+            font-size: 14px;
+        }
+        .notes-input {
+            width: 100%;
+            height: 80px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            padding: 10px 15px;
+            font-size: 14px;
+            resize: none;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS 状态栏 -->
+    <div class="ios-status-bar">
+        <div>9:41</div>
+        <div class="flex space-x-2">
+            <i class="fas fa-signal"></i>
+            <i class="fas fa-wifi"></i>
+            <i class="fas fa-battery-full"></i>
+        </div>
+    </div>
+    
+    <!-- 页面标题 -->
+    <div class="app-header">
+        <a href="expense_list.html" class="header-btn">取消</a>
+        <div class="header-title">添加消费</div>
+        <button class="header-btn">保存</button>
+    </div>
+    
+    <!-- 页面内容 -->
+    <div class="app-content">
+        <!-- 金额输入 -->
+        <div class="amount-input-container">
+            <div class="amount-label">金额</div>
+            <div class="amount-input">
+                <span class="currency-symbol">¥</span>
+                <input type="text" id="amount" placeholder="0.00" value="3,600">
+            </div>
+        </div>
+        
+        <!-- 旅行选择 -->
+        <div class="form-group">
+            <div class="input-row">
+                <div class="input-icon">
+                    <i class="fas fa-suitcase"></i>
+                </div>
+                <select class="input-field">
+                    <option>日本关西之旅</option>
+                    <option>三亚阳光之旅</option>
+                    <option>巴黎艺术之旅</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- 分类选择 -->
+        <div class="form-label">分类</div>
+        <div class="categories">
+            <div class="category">
+                <div class="category-icon" style="background-color: #ff9500;">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div class="category-name">餐饮</div>
+            </div>
+            <div class="category">
+                <div class="category-icon" style="background-color: #4cd964;">
+                    <i class="fas fa-ticket-alt"></i>
+                </div>
+                <div class="category-name">门票</div>
+            </div>
+            <div class="category">
+                <div class="category-icon" style="background-color: #5ac8fa;">
+                    <i class="fas fa-train"></i>
+                </div>
+                <div class="category-name">交通</div>
+            </div>
+            <div class="category">
+                <div class="category-icon" style="background-color: #ff2d55;">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <div class="category-name">购物</div>
+            </div>
+            <div class="category">
+                <div class="category-icon" style="background-color: #5856d6;">
+                    <i class="fas fa-hotel"></i>
+                </div>
+                <div class="category-name">住宿</div>
+            </div>
+            <div class="category">
+                <div class="category-icon" style="background-color: #ff3b30;">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <div class="category-name">纪念品</div>
+            </div>
+            <div class="category">
+                <div class="category-icon" style="background-color: #34c759;">
+                    <i class="fas fa-coffee"></i>
+                </div>
+                <div class="category-name">休闲</div>
+            </div>
+            <div class="category">
+                <div class="category-icon" style="background-color: #007aff;">
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+                <div class="category-name">更多</div>
+            </div>
+        </div>
+        
+        <!-- 消费名称 -->
+        <div class="form-group">
+            <div class="input-row">
+                <div class="input-icon">
+                    <i class="fas fa-edit"></i>
+                </div>
+                <input type="text" class="input-field" placeholder="消费名称" value="午餐 - 日式套餐">
+            </div>
+        </div>
+        
+        <!-- 位置 -->
+        <div class="form-group">
+            <div class="input-row">
+                <div class="input-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <input type="text" class="input-field" placeholder="位置" value="京都站附近">
+            </div>
+        </div>
+        
+        <!-- 支付方式 -->
+        <div class="form-label">支付方式</div>
+        <div class="payment-methods">
+            <div class="payment-method active">信用卡</div>
+            <div class="payment-method">现金</div>
+            <div class="payment-method">支付宝</div>
+            <div class="payment-method">微信支付</div>
+        </div>
+        
+        <!-- 日期和时间 -->
+        <div class="form-label">日期和时间</div>
+        <div class="date-time-picker">
+            <input type="date" class="date-picker" value="2023-10-17">
+            <input type="time" class="time-picker" value="12:30">
+        </div>
+        
+        <!-- 备注 -->
+        <div class="form-label">备注</div>
+        <textarea class="notes-input" placeholder="添加备注...">和朋友一起享用的美味日式料理，套餐内容丰富，值得推荐。</textarea>
+        
+        <!-- 关联日记 -->
+        <div class="form-group">
+            <div class="input-row">
+                <div class="input-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <select class="input-field">
+                    <option>关联到：京都一日游 - 金阁寺与岚山</option>
+                    <option>不关联日记</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
