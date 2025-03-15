@@ -30,57 +30,39 @@
             z-index: 10;
             font-size: 14px;
         }
-        .ios-nav-bar {
-            height: 83px;
-            background-color: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid #e0e0e0;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            position: sticky;
-            bottom: 0;
-            z-index: 10;
-        }
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #8e8e93;
-            font-size: 10px;
-            padding: 8px 0;
-        }
-        .nav-item.active {
-            color: #007aff;
-        }
-        .nav-item i {
-            font-size: 24px;
-            margin-bottom: 4px;
-        }
         .app-content {
             flex: 1;
             overflow-y: auto;
-            padding-bottom: 83px;
         }
         .app-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 16px;
+            padding: 16px;
             background-color: white;
-            font-size: 17px;
-            font-weight: 600;
             border-bottom: 1px solid #e0e0e0;
             position: sticky;
             top: 44px;
             z-index: 9;
+        }
+        .header-title {
+            font-size: 22px;
+            font-weight: 600;
+        }
+        .header-actions {
+            display: flex;
+            gap: 20px;
+        }
+        .header-action {
+            color: #007aff;
+            font-size: 18px;
         }
         .budget-card {
             background-color: white;
             border-radius: 12px;
             margin: 16px;
             padding: 16px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         .budget-header {
             display: flex;
@@ -98,16 +80,16 @@
         }
         .budget-progress {
             width: 100%;
-            height: 10px;
+            height: 6px;
             background-color: #f0f0f0;
-            border-radius: 5px;
-            margin-bottom: 10px;
+            border-radius: 3px;
+            margin-bottom: 8px;
             overflow: hidden;
         }
         .budget-bar {
             height: 100%;
             background-color: #34c759;
-            border-radius: 5px;
+            border-radius: 3px;
         }
         .budget-info {
             display: flex;
@@ -115,70 +97,30 @@
             font-size: 13px;
             color: #8e8e93;
         }
-        .segment-control {
-            display: flex;
-            background-color: #f0f0f0;
-            border-radius: 8px;
-            margin: 10px 16px;
-            overflow: hidden;
+        .expense-section {
+            margin: 24px 16px;
         }
-        .segment-item {
-            flex: 1;
-            text-align: center;
-            padding: 8px 0;
-            font-size: 14px;
-            color: #666;
-        }
-        .segment-item.active {
-            background-color: white;
-            font-weight: 500;
-            color: #007aff;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-        .expense-filter {
+        .section-header {
             display: flex;
             justify-content: space-between;
-            margin: 16px;
             align-items: center;
+            margin-bottom: 12px;
         }
-        .filter-left {
-            display: flex;
-            gap: 10px;
-        }
-        .filter-chip {
-            background-color: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 16px;
-            padding: 6px 12px;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-        }
-        .filter-chip i {
-            margin-right: 6px;
-            font-size: 12px;
-        }
-        .filter-right {
-            color: #007aff;
-            font-size: 14px;
-        }
-        .expense-date-heading {
+        .section-title {
+            font-size: 17px;
             font-weight: 600;
-            padding: 16px 16px 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            color: #333;
         }
-        .date-total {
-            color: #ff3b30;
-            font-weight: 500;
+        .section-action {
+            font-size: 14px;
+            color: #007aff;
         }
-        .expense-list {
+        .expense-card {
             background-color: white;
             border-radius: 12px;
-            margin: 0 16px 16px;
+            margin-bottom: 12px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         .expense-item {
             display: flex;
@@ -188,53 +130,70 @@
         .expense-item:last-child {
             border-bottom: none;
         }
-        .expense-category-icon {
+        .expense-icon {
             width: 40px;
             height: 40px;
             border-radius: 20px;
-            background-color: #007aff;
+            background-color: #f0f0f0;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
             margin-right: 12px;
-            flex-shrink: 0;
+            color: #666;
+            font-size: 18px;
         }
-        .expense-details {
+        .expense-content {
             flex: 1;
         }
         .expense-title {
-            font-weight: 500;
+            font-size: 16px;
             margin-bottom: 4px;
         }
-        .expense-subtitle {
+        .expense-details {
+            display: flex;
+            justify-content: space-between;
             font-size: 13px;
             color: #8e8e93;
-            display: flex;
-            align-items: center;
-        }
-        .expense-subtitle i {
-            margin-right: 4px;
-            font-size: 11px;
         }
         .expense-amount {
-            font-weight: 600;
-            color: #ff3b30;
+            font-size: 16px;
+            font-weight: 500;
         }
         .fab-button {
             position: fixed;
-            bottom: 100px;
+            bottom: 20px;
             right: 20px;
-            width: 56px;
-            height: 56px;
-            border-radius: 28px;
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
             background-color: #007aff;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
             color: white;
-            font-size: 24px;
+            font-size: 22px;
+        }
+        .segment-control {
+            display: flex;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            margin: 16px;
+            overflow: hidden;
+        }
+        .segment-item {
+            flex: 1;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 14px;
+            color: #666;
+            cursor: pointer;
+        }
+        .segment-item.active {
+            background-color: white;
+            font-weight: 500;
+            color: #007aff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -251,182 +210,174 @@
     
     <!-- 页面标题 -->
     <div class="app-header">
-        <div>记账</div>
-        <button class="text-blue-500"><i class="fas fa-chart-pie"></i></button>
+        <div class="header-title">记账</div>
+        <div class="header-actions">
+            <a href="home.html" class="header-action">
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="expense_stats.html" class="header-action">
+                <i class="fas fa-chart-pie"></i>
+            </a>
+        </div>
     </div>
     
     <!-- 页面内容 -->
     <div class="app-content">
+        <!-- 分段控制器 -->
+        <div class="segment-control">
+            <div class="segment-item active">全部</div>
+            <div class="segment-item">按旅行</div>
+            <div class="segment-item">按分类</div>
+        </div>
+        
         <!-- 预算卡片 -->
         <div class="budget-card">
             <div class="budget-header">
-                <div class="budget-title">日本关西之旅 · 总预算</div>
-                <div class="budget-amount">¥25,000</div>
+                <div class="budget-title">本月消费</div>
+                <div class="budget-amount">¥3,280</div>
             </div>
             <div class="budget-progress">
-                <div class="budget-bar" style="width: 62%;"></div>
+                <div class="budget-bar" style="width: 65%;"></div>
             </div>
             <div class="budget-info">
-                <div>已用：¥15,420 (62%)</div>
-                <div>剩余：¥9,580</div>
+                <div>预算: ¥5,000</div>
+                <div>剩余: ¥1,720</div>
             </div>
         </div>
         
-        <!-- 分段控制器 -->
-        <div class="segment-control">
-            <div class="segment-item active">支出</div>
-            <div class="segment-item">收入</div>
-            <div class="segment-item">全部</div>
-        </div>
-        
-        <!-- 筛选器 -->
-        <div class="expense-filter">
-            <div class="filter-left">
-                <div class="filter-chip">
-                    <i class="fas fa-suitcase"></i>
-                    <span>日本关西之旅</span>
-                </div>
-                <div class="filter-chip">
-                    <i class="fas fa-tag"></i>
-                    <span>分类</span>
-                </div>
+        <!-- 最近消费 -->
+        <div class="expense-section">
+            <div class="section-header">
+                <div class="section-title">最近消费</div>
+                <a href="#" class="section-action">查看全部</a>
             </div>
-            <div class="filter-right">
-                <i class="fas fa-sliders-h"></i>
-            </div>
-        </div>
-        
-        <!-- 10月17日消费 -->
-        <div class="expense-date-heading">
-            <div>10月17日</div>
-            <div class="date-total">¥15,420</div>
-        </div>
-        <div class="expense-list">
-            <div class="expense-item">
-                <div class="expense-category-icon" style="background-color: #5ac8fa;">
-                    <i class="fas fa-train"></i>
-                </div>
-                <div class="expense-details">
-                    <div class="expense-title">JR往返车票</div>
-                    <div class="expense-subtitle">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>大阪 - 京都</span>
+            
+            <div class="expense-card">
+                <div class="expense-item">
+                    <div class="expense-icon" style="background-color: #ffeceb; color: #ff3b30;">
+                        <i class="fas fa-utensils"></i>
                     </div>
-                </div>
-                <div class="expense-amount">¥2,860</div>
-            </div>
-            <div class="expense-item">
-                <div class="expense-category-icon" style="background-color: #4cd964;">
-                    <i class="fas fa-ticket-alt"></i>
-                </div>
-                <div class="expense-details">
-                    <div class="expense-title">金阁寺门票</div>
-                    <div class="expense-subtitle">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>京都 金阁寺</span>
+                    <div class="expense-content">
+                        <div class="expense-title">晚餐 - 寿司店</div>
+                        <div class="expense-details">
+                            <div>今天 · 日本关西之旅</div>
+                        </div>
                     </div>
+                    <div class="expense-amount">¥320</div>
                 </div>
-                <div class="expense-amount">¥1,200</div>
-            </div>
-            <div class="expense-item">
-                <div class="expense-category-icon" style="background-color: #ff9500;">
-                    <i class="fas fa-utensils"></i>
-                </div>
-                <div class="expense-details">
-                    <div class="expense-title">午餐 - 日式套餐</div>
-                    <div class="expense-subtitle">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>京都站附近</span>
+                
+                <div class="expense-item">
+                    <div class="expense-icon" style="background-color: #e9f7fe; color: #007aff;">
+                        <i class="fas fa-subway"></i>
                     </div>
-                </div>
-                <div class="expense-amount">¥3,600</div>
-            </div>
-            <div class="expense-item">
-                <div class="expense-category-icon" style="background-color: #ff2d55;">
-                    <i class="fas fa-gift"></i>
-                </div>
-                <div class="expense-details">
-                    <div class="expense-title">纪念品</div>
-                    <div class="expense-subtitle">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>京都 岚山</span>
+                    <div class="expense-content">
+                        <div class="expense-title">地铁票</div>
+                        <div class="expense-details">
+                            <div>今天 · 日本关西之旅</div>
+                        </div>
                     </div>
+                    <div class="expense-amount">¥150</div>
                 </div>
-                <div class="expense-amount">¥7,760</div>
+                
+                <div class="expense-item">
+                    <div class="expense-icon" style="background-color: #f0f8ff; color: #5856d6;">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <div class="expense-content">
+                        <div class="expense-title">大阪城门票</div>
+                        <div class="expense-details">
+                            <div>昨天 · 日本关西之旅</div>
+                        </div>
+                    </div>
+                    <div class="expense-amount">¥200</div>
+                </div>
             </div>
         </div>
         
-        <!-- 10月16日消费 -->
-        <div class="expense-date-heading">
-            <div>10月16日</div>
-            <div class="date-total">¥5,800</div>
-        </div>
-        <div class="expense-list">
-            <div class="expense-item">
-                <div class="expense-category-icon" style="background-color: #4cd964;">
-                    <i class="fas fa-ticket-alt"></i>
-                </div>
-                <div class="expense-details">
-                    <div class="expense-title">大阪城门票</div>
-                    <div class="expense-subtitle">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>大阪城公园</span>
-                    </div>
-                </div>
-                <div class="expense-amount">¥800</div>
+        <!-- 按分类消费 -->
+        <div class="expense-section">
+            <div class="section-header">
+                <div class="section-title">按分类</div>
             </div>
-            <div class="expense-item">
-                <div class="expense-category-icon" style="background-color: #ff9500;">
-                    <i class="fas fa-utensils"></i>
-                </div>
-                <div class="expense-details">
-                    <div class="expense-title">午餐 - 寿司</div>
-                    <div class="expense-subtitle">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>大阪城附近</span>
+            
+            <div class="expense-card">
+                <div class="expense-item">
+                    <div class="expense-icon" style="background-color: #ffeceb; color: #ff3b30;">
+                        <i class="fas fa-utensils"></i>
                     </div>
-                </div>
-                <div class="expense-amount">¥3,200</div>
-            </div>
-            <div class="expense-item">
-                <div class="expense-category-icon" style="background-color: #ff9500;">
-                    <i class="fas fa-coffee"></i>
-                </div>
-                <div class="expense-details">
-                    <div class="expense-title">咖啡和点心</div>
-                    <div class="expense-subtitle">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>大阪市中心</span>
+                    <div class="expense-content">
+                        <div class="expense-title">餐饮</div>
+                        <div class="expense-details">
+                            <div>8笔消费</div>
+                        </div>
                     </div>
+                    <div class="expense-amount">¥1,250</div>
                 </div>
-                <div class="expense-amount">¥1,800</div>
+                
+                <div class="expense-item">
+                    <div class="expense-icon" style="background-color: #e9f7fe; color: #007aff;">
+                        <i class="fas fa-subway"></i>
+                    </div>
+                    <div class="expense-content">
+                        <div class="expense-title">交通</div>
+                        <div class="expense-details">
+                            <div>5笔消费</div>
+                        </div>
+                    </div>
+                    <div class="expense-amount">¥780</div>
+                </div>
+                
+                <div class="expense-item">
+                    <div class="expense-icon" style="background-color: #f0f8ff; color: #5856d6;">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <div class="expense-content">
+                        <div class="expense-title">门票</div>
+                        <div class="expense-details">
+                            <div>3笔消费</div>
+                        </div>
+                    </div>
+                    <div class="expense-amount">¥650</div>
+                </div>
+                
+                <div class="expense-item">
+                    <div class="expense-icon" style="background-color: #f2f9f0; color: #34c759;">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <div class="expense-content">
+                        <div class="expense-title">购物</div>
+                        <div class="expense-details">
+                            <div>2笔消费</div>
+                        </div>
+                    </div>
+                    <div class="expense-amount">¥600</div>
+                </div>
             </div>
         </div>
     </div>
     
-    <!-- 新建消费记录按钮 -->
+    <!-- 新建消费按钮 -->
     <a href="add_expense.html" class="fab-button">
         <i class="fas fa-plus"></i>
     </a>
     
-    <!-- iOS 导航栏 -->
-    <div class="ios-nav-bar">
-        <a href="home.html" class="nav-item">
-            <i class="fas fa-suitcase"></i>
-            <span>旅行</span>
-        </a>
-        <a href="expense_list.html" class="nav-item active">
-            <i class="fas fa-coins"></i>
-            <span>记账</span>
-        </a>
-        <a href="travel_map.html" class="nav-item">
-            <i class="fas fa-map-marked-alt"></i>
-            <span>地图</span>
-        </a>
-        <a href="profile.html" class="nav-item">
-            <i class="fas fa-user"></i>
-            <span>我的</span>
-        </a>
-    </div>
+    <script>
+        // 分段控制器功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const segmentItems = document.querySelectorAll('.segment-item');
+            
+            segmentItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // 移除所有激活状态
+                    segmentItems.forEach(i => i.classList.remove('active'));
+                    
+                    // 激活当前点击的项
+                    this.classList.add('active');
+                    
+                    // 这里可以添加筛选消费记录的逻辑
+                });
+            });
+        });
+    </script>
 </body>
 </html>

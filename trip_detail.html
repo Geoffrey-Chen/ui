@@ -1,4 +1,4 @@
-<!--旅行详情-->>
+<!--旅行详情-->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -19,125 +19,94 @@
             flex-direction: column;
         }
         .ios-status-bar {
-            background-color: rgba(0,0,0,0);
+            background-color: #fff;
             height: 44px;
             padding: 10px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: absolute;
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
             z-index: 10;
             font-size: 14px;
-            color: white;
-        }
-        .ios-nav-bar {
-            height: 83px;
-            background-color: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid #e0e0e0;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            position: sticky;
-            bottom: 0;
-            z-index: 10;
-        }
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #8e8e93;
-            font-size: 10px;
-            padding: 8px 0;
-        }
-        .nav-item.active {
-            color: #007aff;
-        }
-        .nav-item i {
-            font-size: 24px;
-            margin-bottom: 4px;
         }
         .app-content {
             flex: 1;
             overflow-y: auto;
         }
-        .trip-header {
-            height: 240px;
-            position: relative;
-        }
-        .trip-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .trip-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
-            padding: 20px 16px;
-            color: white;
-        }
-        .back-button {
-            position: absolute;
-            top: 44px;
-            left: 16px;
-            width: 36px;
-            height: 36px;
-            border-radius: 18px;
-            background-color: rgba(0,0,0,0.5);
+        .app-header {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            color: white;
-        }
-        .edit-button {
-            position: absolute;
-            top: 44px;
-            right: 16px;
-            width: 36px;
-            height: 36px;
-            border-radius: 18px;
-            background-color: rgba(0,0,0,0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-        }
-        .tab-bar {
-            display: flex;
+            padding: 16px;
             background-color: white;
             border-bottom: 1px solid #e0e0e0;
             position: sticky;
-            top: 0;
+            top: 44px;
             z-index: 9;
         }
-        .tab-item {
-            flex: 1;
-            text-align: center;
-            padding: 14px 0;
-            font-size: 15px;
-            color: #666;
-            position: relative;
-            cursor: pointer;
+        .header-title {
+            font-size: 22px;
+            font-weight: 600;
         }
-        .tab-item.active {
+        .header-actions {
+            display: flex;
+            gap: 20px;
+        }
+        .header-action {
             color: #007aff;
-            font-weight: 500;
+            font-size: 18px;
         }
-        .tab-item.active:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 25%;
-            width: 50%;
-            height: 3px;
-            background-color: #007aff;
-            border-radius: 1.5px;
+        .back-button {
+            color: #007aff;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+        .back-button i {
+            margin-right: 5px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            margin: 16px;
+            padding: 16px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .card-title {
+            font-weight: 600;
+            font-size: 17px;
+            margin-bottom: 16px;
+        }
+        .info-item {
+            display: flex;
+            margin-bottom: 16px;
+        }
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 12px;
+            color: #007aff;
+            font-size: 16px;
+        }
+        .info-content {
+            flex: 1;
+        }
+        .info-label {
+            font-size: 14px;
+            color: #8e8e93;
+            margin-bottom: 4px;
+        }
+        .info-value {
+            font-size: 16px;
         }
         .stats-container {
             display: flex;
@@ -145,7 +114,7 @@
             background-color: white;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         .stat-item {
             flex: 1;
@@ -166,20 +135,38 @@
             font-size: 12px;
             color: #8e8e93;
         }
+        .diary-section {
+            margin-bottom: 24px;
+        }
+        .section-header {
+            padding: 0 16px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 17px;
+            color: #333;
+        }
         .diary-card {
             background-color: white;
             border-radius: 12px;
-            margin: 16px;
+            margin: 0 16px 12px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         .diary-content {
             padding: 16px;
         }
+        .diary-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
         .diary-date {
             font-size: 14px;
             color: #8e8e93;
-            margin-bottom: 8px;
+        }
+        .diary-trip {
+            font-size: 13px;
+            color: #007aff;
         }
         .diary-title {
             font-size: 17px;
@@ -191,6 +178,10 @@
             color: #333;
             margin-bottom: 12px;
             line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
         .diary-photos {
             display: flex;
@@ -205,6 +196,7 @@
         }
         .diary-footer {
             display: flex;
+            justify-content: space-between;
             font-size: 13px;
             color: #8e8e93;
             border-top: 1px solid #f0f0f0;
@@ -219,24 +211,103 @@
         }
         .fab-button {
             position: fixed;
-            bottom: 100px;
+            bottom: 20px;
             right: 20px;
-            width: 56px;
-            height: 56px;
-            border-radius: 28px;
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
             background-color: #007aff;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
             color: white;
-            font-size: 24px;
+            font-size: 22px;
         }
-        .tab-content {
-            display: none;
+        .search-bar {
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            margin: 10px 16px;
         }
-        .tab-content.active {
-            display: block;
+        .search-bar i {
+            color: #8e8e93;
+            margin-right: 8px;
+        }
+        .search-input {
+            border: none;
+            background: transparent;
+            flex: 1;
+            font-size: 14px;
+            color: #333;
+        }
+        .search-input::placeholder {
+            color: #8e8e93;
+        }
+        .calendar-view {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 16px;
+            margin-bottom: 10px;
+            -webkit-overflow-scrolling: touch;
+        }
+        .calendar-day {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 16px;
+            min-width: 40px;
+        }
+        .calendar-date {
+            width: 36px;
+            height: 36px;
+            border-radius: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        .calendar-date.active {
+            background-color: #007aff;
+            color: white;
+        }
+        .calendar-day-name {
+            font-size: 12px;
+            color: #8e8e93;
+        }
+        .diary-section {
+            margin-bottom: 24px;
+        }
+        .section-header {
+            padding: 0 16px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 17px;
+            color: #333;
+        }
+        .segment-control {
+            display: flex;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            margin: 10px 16px;
+            overflow: hidden;
+        }
+        .segment-item {
+            flex: 1;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 14px;
+            color: #666;
+            cursor: pointer;
+        }
+        .segment-item.active {
+            background-color: white;
+            font-weight: 500;
+            color: #007aff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -251,27 +322,25 @@
         </div>
     </div>
     
+    <!-- 页面标题 -->
+    <div class="app-header">
+        <a href="home.html" class="back-button">
+            <i class="fas fa-chevron-left"></i>
+            <span>返回</span>
+        </a>
+        <div class="header-title">日本关西之旅</div>
+        <div class="header-actions">
+            <a href="expense_list.html" class="header-action">
+                <i class="fas fa-coins"></i>
+            </a>
+            <a href="travel_map.html" class="header-action">
+                <i class="fas fa-map-marked-alt"></i>
+            </a>
+        </div>
+    </div>
+    
     <!-- 页面内容 -->
     <div class="app-content">
-        <!-- 旅行头部 -->
-        <div class="trip-header">
-            <img src="https://images.unsplash.com/photo-1478860409698-8707f313ee8b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" class="trip-image" alt="日本之旅">
-            <div class="trip-overlay">
-                <h1 class="text-xl font-bold mb-1">日本关西之旅</h1>
-                <p class="text-sm opacity-90">2023.10.15 - 2023.10.21</p>
-                <div class="flex items-center text-xs bg-blue-500 bg-opacity-30 text-white px-2 py-1 rounded-full w-fit mt-2">
-                    <i class="fas fa-walking mr-1"></i>
-                    <span>进行中</span>
-                </div>
-            </div>
-            <a href="home.html" class="back-button">
-                <i class="fas fa-chevron-left"></i>
-            </a>
-            <button class="edit-button">
-                <i class="fas fa-ellipsis-h"></i>
-            </button>
-        </div>
-        
         <!-- 旅行数据统计 -->
         <div class="stats-container">
             <div class="stat-item">
@@ -291,59 +360,61 @@
                 <div class="stat-label">地点</div>
             </div>
         </div>
-        
-        <!-- 标签栏 -->
-        <div class="tab-bar">
-            <div class="tab-item active" onclick="switchTab('diary')">日记</div>
-            <div class="tab-item" onclick="switchTab('expense')">记账</div>
-            <div class="tab-item" onclick="switchTab('map')">轨迹</div>
+
+        <!-- 搜索栏 -->
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" class="search-input" placeholder="搜索日记...">
         </div>
         
-        <!-- 日记内容 -->
-        <div id="diary-content" class="tab-content active">
-            <!-- 日记列表 -->
-            <a href="diary_detail.html" class="block">
-                <div class="diary-card">
-                    <div class="diary-content">
-                        <div class="diary-date">10月15日 · 星期一</div>
-                        <div class="diary-title">抵达大阪，初见关西</div>
-                        <div class="diary-text">下午到达关西机场，办理入住后直奔道顿崛美食街，感受大阪的活力与美食。尝试了章鱼烧、回转寿司，非常美味！</div>
-                        <div class="diary-photos">
-                            <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" class="diary-photo" alt="大阪照片">
-                            <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" class="diary-photo" alt="大阪照片">
-                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" class="diary-photo" alt="大阪照片">
-                        </div>
-                        <div class="diary-footer">
-                            <div class="diary-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>大阪市 道顿崛</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            
-            <div class="diary-card">
-                <div class="diary-content">
-                    <div class="diary-date">10月16日 · 星期二</div>
-                    <div class="diary-title">大阪城公园与天守阁</div>
-                    <div class="diary-text">今天游览了大阪城公园，登上天守阁俯瞰整个大阪市区，非常壮观！了解了丰臣秀吉的历史，公园里的樱花树虽然没有盛开，但依然很美。</div>
-                    <div class="diary-photos">
-                        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" class="diary-photo" alt="大阪城照片">
-                        <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" class="diary-photo" alt="大阪城照片">
-                    </div>
-                    <div class="diary-footer">
-                        <div class="diary-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>大阪城公园</span>
-                        </div>
-                    </div>
-                </div>
+        <!-- 分段控制器 -->
+        <div class="segment-control">
+            <div class="segment-item active">全部</div>
+            <div class="segment-item">按旅行</div>
+            <div class="segment-item">按地点</div>
+        </div>
+        
+        <!-- 日历视图 -->
+        <div class="calendar-view">
+            <div class="calendar-day">
+                <div class="calendar-date">15</div>
+                <div class="calendar-day-name">周一</div>
             </div>
-            
+            <div class="calendar-day">
+                <div class="calendar-date">16</div>
+                <div class="calendar-day-name">周二</div>
+            </div>
+            <div class="calendar-day">
+                <div class="calendar-date active">17</div>
+                <div class="calendar-day-name">周三</div>
+            </div>
+            <div class="calendar-day">
+                <div class="calendar-date">18</div>
+                <div class="calendar-day-name">周四</div>
+            </div>
+            <div class="calendar-day">
+                <div class="calendar-date">19</div>
+                <div class="calendar-day-name">周五</div>
+            </div>
+            <div class="calendar-day">
+                <div class="calendar-date">20</div>
+                <div class="calendar-day-name">周六</div>
+            </div>
+            <div class="calendar-day">
+                <div class="calendar-date">21</div>
+                <div class="calendar-day-name">周日</div>
+            </div>
+        </div>
+        
+        <!-- 日记列表 -->
+        <div class="section-header">旅行日记</div>
+        <a href="diary_detail.html" class="block">
             <div class="diary-card">
                 <div class="diary-content">
-                    <div class="diary-date">10月17日 · 星期三</div>
+                    <div class="diary-header">
+                        <div class="diary-date">10月17日 · 星期三</div>
+                        <div class="diary-trip">日本关西之旅</div>
+                    </div>
                     <div class="diary-title">京都一日游 - 金阁寺与岚山</div>
                     <div class="diary-text">从大阪出发，搭乘JR前往京都，先参观了金阁寺，金色的外观在阳光下熠熠生辉。下午去了岚山，漫步在竹林小径，非常宁静美好。</div>
                     <div class="diary-photos">
@@ -359,103 +430,55 @@
                     </div>
                 </div>
             </div>
+        </a>
+        
+        <div class="diary-card">
+            <div class="diary-content">
+                <div class="diary-header">
+                    <div class="diary-date">10月16日 · 星期二</div>
+                    <div class="diary-trip">日本关西之旅</div>
+                </div>
+                <div class="diary-title">大阪城公园与天守阁</div>
+                <div class="diary-text">今天游览了大阪城公园，登上天守阁俯瞰整个大阪市区，非常壮观！了解了丰臣秀吉的历史，公园里的樱花树虽然没有盛开，但依然很美。</div>
+                <div class="diary-photos">
+                    <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" class="diary-photo" alt="大阪城照片">
+                    <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" class="diary-photo" alt="大阪城照片">
+                </div>
+                <div class="diary-footer">
+                    <div class="diary-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>大阪城公园</span>
+                    </div>
+                </div>
+            </div>
         </div>
         
-        <!-- 记账内容 -->
-        <div id="expense-content" class="tab-content">
-            <div class="p-4 text-center text-gray-500">
-                <p>此处显示当前旅行的消费记录</p>
-                <p class="mt-2">点击底部"+"按钮添加新的消费记录</p>
+        <div class="diary-card">
+            <div class="diary-content">
+                <div class="diary-header">
+                    <div class="diary-date">10月15日 · 星期一</div>
+                    <div class="diary-trip">日本关西之旅</div>
+                </div>
+                <div class="diary-title">抵达大阪，初见关西</div>
+                <div class="diary-text">下午到达关西机场，办理入住后直奔道顿崛美食街，感受大阪的活力与美食。尝试了章鱼烧、回转寿司，非常美味！</div>
+                <div class="diary-photos">
+                    <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" class="diary-photo" alt="大阪照片">
+                    <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" class="diary-photo" alt="大阪照片">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" class="diary-photo" alt="大阪照片">
+                </div>
+                <div class="diary-footer">
+                    <div class="diary-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>大阪市 道顿崛</span>
+                    </div>
+                </div>
             </div>
-            <!-- 这里可以添加当前旅行的消费记录列表 -->
-        </div>
-        
-        <!-- 轨迹内容 -->
-        <div id="map-content" class="tab-content">
-            <div class="p-4 text-center text-gray-500">
-                <p>此处显示当前旅行的轨迹地图</p>
-            </div>
-            <!-- 这里可以嵌入当前旅行的地图组件 -->
         </div>
     </div>
     
-    <!-- 新建按钮 - 根据当前标签页变化 -->
+    <!-- 新建按钮 -->
     <a href="create_diary.html" id="fab-button" class="fab-button">
         <i class="fas fa-plus"></i>
     </a>
-    
-    <!-- iOS 导航栏 -->
-    <div class="ios-nav-bar">
-        <a href="home.html" class="nav-item active">
-            <i class="fas fa-suitcase"></i>
-            <span>旅行</span>
-        </a>
-        <a href="expense_list.html" class="nav-item">
-            <i class="fas fa-coins"></i>
-            <span>记账</span>
-        </a>
-        <a href="travel_map.html" class="nav-item">
-            <i class="fas fa-map-marked-alt"></i>
-            <span>地图</span>
-        </a>
-        <a href="profile.html" class="nav-item">
-            <i class="fas fa-user"></i>
-            <span>我的</span>
-        </a>
-    </div>
-    
-    <script>
-        // 标签页切换功能
-        function switchTab(tabName) {
-            // 隐藏所有内容
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            // 取消所有标签激活状态
-            document.querySelectorAll('.tab-item').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // 激活选中的标签和内容
-            document.getElementById(tabName + '-content').classList.add('active');
-            
-            // 找到对应的标签并激活
-            const tabs = document.querySelectorAll('.tab-item');
-            if (tabName === 'diary') {
-                tabs[0].classList.add('active');
-                document.getElementById('fab-button').href = 'create_diary.html';
-            } else if (tabName === 'expense') {
-                tabs[1].classList.add('active');
-                document.getElementById('fab-button').href = 'add_expense.html';
-            } else if (tabName === 'map') {
-                tabs[2].classList.add('active');
-                // 地图标签页下可以隐藏浮动按钮或改变其功能
-                document.getElementById('fab-button').style.display = 'none';
-            }
-        }
-        
-        // 初始化时显示日记标签页
-        document.addEventListener('DOMContentLoaded', function() {
-            switchTab('diary');
-            
-            // 监听底部导航栏点击，防止直接跳转
-            document.querySelectorAll('.ios-nav-bar .nav-item').forEach(item => {
-                item.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    
-                    // 如果点击的是记账或地图，则切换到对应的标签页而不是跳转
-                    if (href === 'expense_list.html') {
-                        e.preventDefault();
-                        switchTab('expense');
-                    } else if (href === 'travel_map.html') {
-                        e.preventDefault();
-                        switchTab('map');
-                    }
-                    // 其他导航项正常跳转
-                });
-            });
-        });
-    </script>
 </body>
 </html>

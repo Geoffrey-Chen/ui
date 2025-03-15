@@ -53,11 +53,56 @@
             margin: 20px 0;
             color: #333;
         }
+        .design-notes {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .design-notes h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .design-notes p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: #555;
+        }
+        .design-notes ul {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+        .design-notes li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+            color: #555;
+        }
     </style>
 </head>
 <body>
     <div class="container mx-auto my-10">
         <h1 class="text-4xl font-bold text-center mb-10">旅记App原型</h1>
+        
+        <div class="design-notes">
+            <h3>设计说明</h3>
+            <p>本原型采用iOS设计风格，特别参考了iOS"手记"应用的设计语言，以提供简洁、直观的用户体验。</p>
+            
+            <h3>主要设计特点：</h3>
+            <ul>
+                <li><strong>移除底部导航栏</strong> - 将功能入口重新布局到页面顶部或内容区域，减少屏幕空间占用</li>
+                <li><strong>分段控制器</strong> - 使用iOS风格的分段控制器替代部分导航功能，提供更直观的内容切换</li>
+                <li><strong>卡片式布局</strong> - 采用卡片式设计增强内容层次感和视觉区分度</li>
+                <li><strong>统一视觉语言</strong> - 一致的颜色方案、字体样式、间距和圆角效果</li>
+                <li><strong>轻量级视觉效果</strong> - 符合iOS设计理念的轻量级阴影和过渡效果</li>
+                <li><strong>原生交互体验</strong> - 符合iOS交互习惯的按钮、表单控件和手势操作</li>
+            </ul>
+            
+            <p>所有页面均已优化，移除了底部导航栏，并重新设计了导航结构，使整体设计更加符合iOS"手记"应用的风格。</p>
+        </div>
         
         <h2 class="page-title">旅行管理</h2>
         <div class="prototype-container">
@@ -119,7 +164,7 @@
             </div>
         </div>
         
-        <h2 class="page-title">记账功能</h2>
+        <h2 class="page-title">消费管理</h2>
         <div class="prototype-container">
             <div>
                 <div class="screen-title">消费记录</div>
@@ -149,22 +194,19 @@
             </div>
         </div>
         
-        <h2 class="page-title">地图与轨迹</h2>
+        <h2 class="page-title">其他功能</h2>
         <div class="prototype-container">
             <div>
-                <div class="screen-title">旅行轨迹</div>
+                <div class="screen-title">旅行地图</div>
                 <div class="phone-frame">
                     <div class="screen">
                         <iframe src="travel_map.html"></iframe>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <h2 class="page-title">个人中心</h2>
-        <div class="prototype-container">
+            
             <div>
-                <div class="screen-title">我的</div>
+                <div class="screen-title">个人中心</div>
                 <div class="phone-frame">
                     <div class="screen">
                         <iframe src="profile.html"></iframe>

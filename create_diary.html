@@ -39,6 +39,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 44px;
+            z-index: 9;
         }
         .header-btn {
             color: #007aff;
@@ -62,6 +65,7 @@
             margin-bottom: 8px;
             font-weight: 500;
             font-size: 15px;
+            color: #444;
         }
         .form-input {
             width: 100%;
@@ -70,6 +74,11 @@
             border-radius: 10px;
             font-size: 16px;
             background-color: white;
+        }
+        .form-input:focus, .form-textarea:focus, .form-select:focus {
+            outline: none;
+            border-color: #007aff;
+            box-shadow: 0 0 0 1px rgba(0, 122, 255, 0.2);
         }
         .form-textarea {
             width: 100%;
@@ -80,6 +89,19 @@
             min-height: 150px;
             resize: none;
             background-color: white;
+        }
+        .form-select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            background-color: white;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
         }
         .photo-upload-container {
             margin-bottom: 20px;
@@ -93,110 +115,91 @@
         .photo-upload-title h3 {
             font-weight: 500;
             font-size: 15px;
+            color: #444;
         }
         .photo-upload-title button {
             color: #007aff;
             font-size: 14px;
         }
-        .photo-upload-grid {
+        .photo-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 8px;
         }
         .photo-item {
-            width: 100%;
-            padding-bottom: 100%;
-            position: relative;
+            aspect-ratio: 1;
             border-radius: 8px;
             overflow: hidden;
+            position: relative;
         }
         .photo-item img {
-            position: absolute;
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        .add-photo {
-            width: 100%;
-            padding-bottom: 100%;
-            position: relative;
-            border-radius: 8px;
-            background-color: #f0f0f0;
-            border: 1px dashed #ccc;
+        .photo-item .remove-btn {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 22px;
+            height: 22px;
+            border-radius: 11px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
+            font-size: 12px;
+        }
+        .add-photo {
+            aspect-ratio: 1;
+            border-radius: 8px;
+            border: 1px dashed #ccc;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #8e8e93;
+            font-size: 12px;
         }
         .add-photo i {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             font-size: 24px;
-            color: #8e8e93;
+            margin-bottom: 4px;
         }
-        .location-select {
+        .location-picker {
             display: flex;
-            background-color: white;
+            align-items: center;
+            padding: 12px;
             border: 1px solid #e0e0e0;
             border-radius: 10px;
-            padding: 12px;
-            align-items: center;
-            margin-bottom: 20px;
+            background-color: white;
         }
         .location-icon {
-            margin-right: 12px;
             color: #007aff;
+            margin-right: 12px;
             font-size: 18px;
         }
         .location-text {
             flex: 1;
-            font-size: 16px;
         }
-        .location-arrow {
+        .location-name {
+            font-size: 16px;
+            margin-bottom: 2px;
+        }
+        .location-address {
+            font-size: 13px;
             color: #8e8e93;
         }
-        .expense-add {
+        .location-action {
+            color: #8e8e93;
+        }
+        .weather-mood-container {
             display: flex;
-            background-color: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 12px;
-            align-items: center;
+            gap: 12px;
             margin-bottom: 20px;
         }
-        .expense-icon {
-            margin-right: 12px;
-            color: #ff3b30;
-            font-size: 18px;
-        }
-        .expense-text {
+        .weather-mood-container > div {
             flex: 1;
-            font-size: 16px;
-        }
-        .expense-arrow {
-            color: #8e8e93;
-        }
-        .weather-select {
-            display: flex;
-            background-color: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 12px;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .weather-icon {
-            margin-right: 12px;
-            color: #ff9500;
-            font-size: 18px;
-        }
-        .weather-text {
-            flex: 1;
-            font-size: 16px;
-        }
-        .weather-arrow {
-            color: #8e8e93;
         }
         .tag-container {
             display: flex;
@@ -205,34 +208,32 @@
             margin-bottom: 20px;
         }
         .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
             background-color: #f0f0f0;
             border-radius: 16px;
-            padding: 6px 12px;
             font-size: 14px;
-            color: #666;
-            display: flex;
-            align-items: center;
         }
         .tag.active {
             background-color: #e1f0ff;
             color: #007aff;
         }
         .tag i {
-            margin-right: 6px;
+            margin-right: 4px;
             font-size: 12px;
         }
-        .form-select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 16px;
-            background-color: white;
-            -webkit-appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%238e8e93' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-            padding-right: 36px;
+        .add-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            border: 1px dashed #ccc;
+            border-radius: 16px;
+            font-size: 14px;
+            color: #8e8e93;
+        }
+        .add-tag i {
+            margin-right: 4px;
         }
     </style>
 </head>
@@ -249,109 +250,134 @@
     
     <!-- 页面标题 -->
     <div class="app-header">
-        <a href="trip_detail.html" class="header-btn">取消</a>
-        <div class="header-title">创建日记</div>
+        <a href="diary_list.html" class="header-btn">取消</a>
+        <div class="header-title">新建日记</div>
         <button class="header-btn">发布</button>
     </div>
     
     <!-- 页面内容 -->
     <div class="app-content">
-        <div class="form-group">
-            <select class="form-select">
-                <option>日本关西之旅</option>
-                <option>三亚阳光之旅</option>
-                <option>巴黎艺术之旅</option>
-            </select>
-        </div>
-        
-        <div class="form-group">
-            <input type="text" class="form-input" placeholder="日记标题">
-        </div>
-        
-        <div class="form-group">
-            <textarea class="form-textarea" placeholder="记录你的旅行见闻..."></textarea>
-        </div>
-        
-        <div class="photo-upload-container">
-            <div class="photo-upload-title">
-                <h3>照片</h3>
-                <button>管理</button>
+        <form>
+            <!-- 旅行选择 -->
+            <div class="form-group">
+                <label class="form-label">选择旅行</label>
+                <select class="form-select">
+                    <option>日本关西之旅</option>
+                    <option>三亚阳光之旅</option>
+                    <option>云南自驾游</option>
+                    <option>+ 创建新旅行</option>
+                </select>
             </div>
-            <div class="photo-upload-grid">
-                <div class="photo-item">
-                    <img src="https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="上传图片">
-                </div>
-                <div class="photo-item">
-                    <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="上传图片">
-                </div>
-                <div class="photo-item">
-                    <img src="https://images.unsplash.com/photo-1576675466969-38eeae4b41f6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="上传图片">
-                </div>
-                <div class="add-photo">
-                    <i class="fas fa-plus"></i>
-                </div>
+            
+            <!-- 日记标题 -->
+            <div class="form-group">
+                <label class="form-label">标题</label>
+                <input type="text" class="form-input" placeholder="给这一天的记忆起个标题吧">
             </div>
-        </div>
-        
-        <div class="location-select">
-            <div class="location-icon">
-                <i class="fas fa-map-marker-alt"></i>
+            
+            <!-- 日记内容 -->
+            <div class="form-group">
+                <label class="form-label">内容</label>
+                <textarea class="form-textarea" placeholder="记录下今天的精彩瞬间..."></textarea>
             </div>
-            <div class="location-text">添加位置</div>
-            <div class="location-arrow">
-                <i class="fas fa-chevron-right"></i>
-            </div>
-        </div>
-        
-        <div class="expense-add">
-            <div class="expense-icon">
-                <i class="fas fa-yen-sign"></i>
-            </div>
-            <div class="expense-text">添加消费记录</div>
-            <div class="expense-arrow">
-                <i class="fas fa-chevron-right"></i>
-            </div>
-        </div>
-        
-        <div class="weather-select">
-            <div class="weather-icon">
-                <i class="fas fa-cloud-sun"></i>
-            </div>
-            <div class="weather-text">添加天气</div>
-            <div class="weather-arrow">
-                <i class="fas fa-chevron-right"></i>
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label class="form-label">标签</label>
-            <div class="tag-container">
-                <div class="tag active">
-                    <i class="fas fa-utensils"></i>
-                    <span>美食</span>
+            
+            <!-- 照片上传 -->
+            <div class="photo-upload-container">
+                <div class="photo-upload-title">
+                    <h3>照片</h3>
+                    <button type="button">从相册选择</button>
                 </div>
-                <div class="tag">
-                    <i class="fas fa-mountain"></i>
-                    <span>景点</span>
-                </div>
-                <div class="tag">
-                    <i class="fas fa-bed"></i>
-                    <span>住宿</span>
-                </div>
-                <div class="tag">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span>购物</span>
-                </div>
-                <div class="tag">
-                    <i class="fas fa-train"></i>
-                    <span>交通</span>
-                </div>
-                <div class="tag">
-                    <i class="fas fa-plus"></i>
-                    <span>添加</span>
+                
+                <div class="photo-grid">
+                    <div class="photo-item">
+                        <img src="https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="上传的照片">
+                        <button class="remove-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://images.unsplash.com/photo-1576675466969-38eeae4b41f6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="上传的照片">
+                        <button class="remove-btn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="add-photo">
+                        <i class="fas fa-camera"></i>
+                        <span>添加照片</span>
+                    </div>
                 </div>
             </div>
-        </div>
+            
+            <!-- 位置选择 -->
+            <div class="form-group">
+                <label class="form-label">位置</label>
+                <div class="location-picker">
+                    <div class="location-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="location-text">
+                        <div class="location-name">京都市 金阁寺、岚山</div>
+                        <div class="location-address">日本京都府京都市北区金阁寺町1</div>
+                    </div>
+                    <div class="location-action">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 天气和心情 -->
+            <div class="weather-mood-container">
+                <div class="form-group">
+                    <label class="form-label">天气</label>
+                    <select class="form-select">
+                        <option>晴朗</option>
+                        <option>多云</option>
+                        <option>阴天</option>
+                        <option>小雨</option>
+                        <option>大雨</option>
+                        <option>雪</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">心情</label>
+                    <select class="form-select">
+                        <option>开心</option>
+                        <option>放松</option>
+                        <option>兴奋</option>
+                        <option>疲惫</option>
+                        <option>平静</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- 标签 -->
+            <div class="form-group">
+                <label class="form-label">标签</label>
+                <div class="tag-container">
+                    <div class="tag active">
+                        <i class="fas fa-utensils"></i>
+                        <span>美食</span>
+                    </div>
+                    <div class="tag">
+                        <i class="fas fa-mountain"></i>
+                        <span>景点</span>
+                    </div>
+                    <div class="tag active">
+                        <i class="fas fa-camera"></i>
+                        <span>摄影</span>
+                    </div>
+                    <div class="tag">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>购物</span>
+                    </div>
+                    <div class="add-tag">
+                        <i class="fas fa-plus"></i>
+                        <span>添加</span>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </body>
 </html>

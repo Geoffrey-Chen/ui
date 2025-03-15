@@ -109,16 +109,17 @@
             pointer-events: none;
         }
         .diary-card {
-            position: absolute;
-            bottom: 90px;
-            left: 16px;
-            right: 16px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
             background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.15);
             padding: 16px;
             transform: translateY(0);
             transition: transform 0.3s ease-in-out;
+            z-index: 99;
         }
         .card-minimized {
             transform: translateY(calc(100% - 50px));
@@ -246,37 +247,37 @@
         <svg class="route-line" viewBox="0 0 100 100" preserveAspectRatio="none">
             <polyline points="35,40 55,50 70,35" stroke="#007aff" stroke-width="0.5" fill="none" stroke-dasharray="2,1" />
         </svg>
+    </div>
+    
+    <!-- 底部日记卡片 -->
+    <div class="diary-card">
+        <div class="card-toggle"></div>
+        <div class="card-header">
+            <div class="card-title">旅行轨迹</div>
+            <i class="fas fa-times text-gray-400"></i>
+        </div>
         
-        <!-- 底部日记卡片 -->
-        <div class="diary-card">
-            <div class="card-toggle"></div>
-            <div class="card-header">
-                <div class="card-title">旅行轨迹</div>
-                <i class="fas fa-times text-gray-400"></i>
+        <div class="diary-date">10月17日 · 星期三</div>
+        <div class="diary-title">京都一日游 - 金阁寺与岚山</div>
+        <div class="diary-text">从大阪出发，搭乘JR前往京都，先参观了金阁寺，金色的外观在阳光下熠熠生辉。下午去了岚山，漫步在竹林小径，非常宁静美好。</div>
+        
+        <div class="diary-photos">
+            <img src="https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" class="diary-photo" alt="京都照片">
+            <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" class="diary-photo" alt="京都照片">
+            <img src="https://images.unsplash.com/photo-1576675466969-38eeae4b41f6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" class="diary-photo" alt="京都照片">
+        </div>
+        
+        <div class="diary-footer">
+            <div>
+                <i class="fas fa-map-marker-alt mr-1"></i>
+                <span>京都市 金阁寺、岚山</span>
             </div>
-            
-            <div class="diary-date">10月17日 · 星期三</div>
-            <div class="diary-title">京都一日游 - 金阁寺与岚山</div>
-            <div class="diary-text">从大阪出发，搭乘JR前往京都，先参观了金阁寺，金色的外观在阳光下熠熠生辉。下午去了岚山，漫步在竹林小径，非常宁静美好。</div>
-            
-            <div class="diary-photos">
-                <img src="https://images.unsplash.com/photo-1493780474015-ba834fd0ce2f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" class="diary-photo" alt="京都照片">
-                <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" class="diary-photo" alt="京都照片">
-                <img src="https://images.unsplash.com/photo-1576675466969-38eeae4b41f6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" class="diary-photo" alt="京都照片">
-            </div>
-            
-            <div class="diary-footer">
-                <div>
-                    <i class="fas fa-map-marker-alt mr-1"></i>
-                    <span>京都市 金阁寺、岚山</span>
-                </div>
-                <a href="diary_detail.html" class="text-blue-500">查看详情</a>
-            </div>
+            <a href="diary_detail.html" class="text-blue-500">查看详情</a>
         </div>
     </div>
     
     <!-- iOS 导航栏 -->
-    <div class="ios-nav-bar">
+    <!-- <div class="ios-nav-bar">
         <a href="home.html" class="nav-item">
             <i class="fas fa-suitcase"></i>
             <span>旅行</span>
@@ -293,6 +294,6 @@
             <i class="fas fa-user"></i>
             <span>我的</span>
         </a>
-    </div>
+    </div> -->
 </body>
 </html>

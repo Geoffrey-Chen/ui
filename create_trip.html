@@ -39,6 +39,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 44px;
+            z-index: 9;
         }
         .header-btn {
             color: #007aff;
@@ -62,6 +65,7 @@
             margin-bottom: 8px;
             font-weight: 500;
             font-size: 15px;
+            color: #444;
         }
         .form-input {
             width: 100%;
@@ -70,6 +74,11 @@
             border-radius: 10px;
             font-size: 16px;
             background-color: white;
+        }
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #007aff;
+            box-shadow: 0 0 0 1px rgba(0, 122, 255, 0.2);
         }
         .form-textarea {
             width: 100%;
@@ -92,30 +101,102 @@
             align-items: center;
             flex-direction: column;
             color: #8e8e93;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .image-upload:hover {
+            background-color: #f9f9f9;
+            border-color: #007aff;
         }
         .image-upload i {
             font-size: 32px;
             margin-bottom: 8px;
+            color: #007aff;
         }
         .date-pickers {
             display: flex;
-            gap: 10px;
+            gap: 12px;
         }
-        .date-picker {
+        .date-pickers .form-group {
             flex: 1;
         }
-        .form-select {
-            width: 100%;
-            padding: 12px;
+        .date-input {
+            display: flex;
+            align-items: center;
+            background-color: white;
             border: 1px solid #e0e0e0;
             border-radius: 10px;
+            padding: 0 12px;
+            height: 44px;
+        }
+        .date-input i {
+            color: #8e8e93;
+            margin-right: 8px;
+        }
+        .date-input input {
+            border: none;
+            background: transparent;
             font-size: 16px;
+            flex: 1;
+        }
+        .date-input input:focus {
+            outline: none;
+        }
+        .budget-input {
+            display: flex;
+            align-items: center;
             background-color: white;
-            -webkit-appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%238e8e93' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-            padding-right: 36px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 0 12px;
+            height: 44px;
+        }
+        .budget-input span {
+            color: #8e8e93;
+            margin-right: 8px;
+            font-weight: 500;
+        }
+        .budget-input input {
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            flex: 1;
+        }
+        .budget-input input:focus {
+            outline: none;
+        }
+        .destination-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .destination-tag {
+            display: inline-flex;
+            align-items: center;
+            background-color: #e1f0ff;
+            color: #007aff;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 14px;
+        }
+        .destination-tag i {
+            margin-left: 6px;
+            font-size: 12px;
+        }
+        .color-options {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+        }
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+        .color-option.selected {
+            box-shadow: 0 0 0 2px white, 0 0 0 4px #007aff;
         }
     </style>
 </head>
@@ -134,61 +215,94 @@
     <div class="app-header">
         <a href="home.html" class="header-btn">取消</a>
         <div class="header-title">创建旅行</div>
-        <button class="header-btn">完成</button>
+        <button class="header-btn">保存</button>
     </div>
     
     <!-- 页面内容 -->
     <div class="app-content">
-        <div class="form-group">
-            <label class="form-label">封面图片</label>
-            <div class="image-upload">
-                <i class="far fa-image"></i>
-                <div>点击上传封面图片</div>
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label class="form-label">旅行名称</label>
-            <input type="text" class="form-input" placeholder="例如：日本关西之旅">
-        </div>
-        
-        <div class="form-group">
-            <label class="form-label">旅行日期</label>
-            <div class="date-pickers">
-                <div class="date-picker">
-                    <input type="date" class="form-input" placeholder="开始日期">
-                </div>
-                <div class="date-picker">
-                    <input type="date" class="form-input" placeholder="结束日期">
+        <form>
+            <!-- 旅行封面 -->
+            <div class="form-group">
+                <label class="form-label">旅行封面</label>
+                <div class="image-upload">
+                    <i class="fas fa-camera"></i>
+                    <span>点击上传封面图片</span>
                 </div>
             </div>
-        </div>
-        
-        <div class="form-group">
-            <label class="form-label">旅行目的地</label>
-            <input type="text" class="form-input" placeholder="例如：日本、大阪、京都">
-        </div>
-        
-        <div class="form-group">
-            <label class="form-label">旅行类型</label>
-            <select class="form-select">
-                <option>自由行</option>
-                <option>跟团游</option>
-                <option>商务旅行</option>
-                <option>探亲访友</option>
-                <option>其他</option>
-            </select>
-        </div>
-        
-        <div class="form-group">
-            <label class="form-label">旅行预算</label>
-            <input type="number" class="form-input" placeholder="例如：10000">
-        </div>
-        
-        <div class="form-group">
-            <label class="form-label">旅行描述</label>
-            <textarea class="form-textarea" placeholder="描述一下这次旅行的计划或目的..."></textarea>
-        </div>
+            
+            <!-- 旅行名称 -->
+            <div class="form-group">
+                <label class="form-label">旅行名称</label>
+                <input type="text" class="form-input" placeholder="给这次旅行起个名字">
+            </div>
+            
+            <!-- 旅行日期 -->
+            <div class="form-group">
+                <label class="form-label">旅行日期</label>
+                <div class="date-pickers">
+                    <div class="form-group">
+                        <div class="date-input">
+                            <i class="far fa-calendar"></i>
+                            <input type="date" placeholder="开始日期">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="date-input">
+                            <i class="far fa-calendar"></i>
+                            <input type="date" placeholder="结束日期">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 目的地 -->
+            <div class="form-group">
+                <label class="form-label">目的地</label>
+                <input type="text" class="form-input" placeholder="添加旅行目的地">
+                <div class="destination-tags">
+                    <div class="destination-tag">
+                        <span>日本</span>
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <div class="destination-tag">
+                        <span>大阪</span>
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <div class="destination-tag">
+                        <span>京都</span>
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 预算 -->
+            <div class="form-group">
+                <label class="form-label">预算</label>
+                <div class="budget-input">
+                    <span>¥</span>
+                    <input type="number" placeholder="设置旅行预算">
+                </div>
+            </div>
+            
+            <!-- 旅行描述 -->
+            <div class="form-group">
+                <label class="form-label">旅行描述</label>
+                <textarea class="form-textarea" placeholder="描述一下这次旅行的计划和期待..."></textarea>
+            </div>
+            
+            <!-- 颜色标签 -->
+            <div class="form-group">
+                <label class="form-label">颜色标签</label>
+                <div class="color-options">
+                    <div class="color-option selected" style="background-color: #007aff;"></div>
+                    <div class="color-option" style="background-color: #5ac8fa;"></div>
+                    <div class="color-option" style="background-color: #4cd964;"></div>
+                    <div class="color-option" style="background-color: #ff9500;"></div>
+                    <div class="color-option" style="background-color: #ff3b30;"></div>
+                    <div class="color-option" style="background-color: #5856d6;"></div>
+                </div>
+            </div>
+        </form>
     </div>
 </body>
 </html>

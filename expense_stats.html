@@ -30,37 +30,9 @@
             z-index: 10;
             font-size: 14px;
         }
-        .ios-nav-bar {
-            height: 83px;
-            background-color: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid #e0e0e0;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            position: sticky;
-            bottom: 0;
-            z-index: 10;
-        }
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #8e8e93;
-            font-size: 10px;
-            padding: 8px 0;
-        }
-        .nav-item.active {
-            color: #007aff;
-        }
-        .nav-item i {
-            font-size: 24px;
-            margin-bottom: 4px;
-        }
         .app-content {
             flex: 1;
             overflow-y: auto;
-            padding-bottom: 83px;
         }
         .app-header {
             display: flex;
@@ -89,13 +61,14 @@
         }
         .header-actions {
             color: #007aff;
+            font-size: 16px;
         }
         .stats-card {
             background-color: white;
             border-radius: 12px;
             margin: 16px;
             padding: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         .stats-header {
             display: flex;
@@ -104,63 +77,50 @@
             margin-bottom: 16px;
         }
         .stats-title {
-            font-size: 15px;
-            color: #8e8e93;
-        }
-        .stats-total {
-            font-size: 24px;
             font-weight: 600;
+            font-size: 17px;
         }
-        .pie-chart {
-            width: 100%;
-            height: 250px;
+        .stats-subtitle {
+            color: #8e8e93;
+            font-size: 14px;
+        }
+        .stats-amount {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .stats-info {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
+            justify-content: space-between;
+            color: #8e8e93;
+            font-size: 14px;
             margin-bottom: 20px;
         }
-        .pie-chart svg {
-            width: 200px;
+        .chart-container {
             height: 200px;
+            margin-bottom: 20px;
+            position: relative;
         }
-        .pie-segment {
-            transition: all 0.3s ease-in-out;
+        .chart-bar {
+            position: absolute;
+            bottom: 0;
+            width: 8%;
+            background-color: #007aff;
+            border-radius: 4px 4px 0 0;
         }
-        .pie-segment:hover {
-            transform: scale(1.05);
-        }
-        .legend {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .legend-item {
-            display: flex;
-            align-items: center;
-            width: calc(50% - 5px);
-            margin-bottom: 10px;
-        }
-        .legend-color {
-            width: 16px;
-            height: 16px;
-            border-radius: 8px;
-            margin-right: 8px;
-        }
-        .legend-label {
-            flex: 1;
-            font-size: 14px;
-            color: #666;
-        }
-        .legend-value {
-            font-weight: 500;
-            font-size: 14px;
+        .chart-label {
+            position: absolute;
+            bottom: -20px;
+            width: 8%;
+            text-align: center;
+            font-size: 12px;
+            color: #8e8e93;
         }
         .segment-control {
             display: flex;
             background-color: #f0f0f0;
             border-radius: 8px;
-            margin: 10px 16px;
+            margin: 16px;
             overflow: hidden;
         }
         .segment-item {
@@ -169,6 +129,7 @@
             padding: 8px 0;
             font-size: 14px;
             color: #666;
+            cursor: pointer;
         }
         .segment-item.active {
             background-color: white;
@@ -176,56 +137,169 @@
             color: #007aff;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
-        .time-filter {
-            display: flex;
-            overflow-x: auto;
-            padding: 0 16px;
-            margin-bottom: 16px;
-            gap: 10px;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-        }
-        .time-filter::-webkit-scrollbar {
-            display: none;
-        }
-        .time-chip {
-            white-space: nowrap;
-            padding: 6px 12px;
+        .category-stats {
             background-color: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 16px;
-            font-size: 14px;
+            border-radius: 12px;
+            margin: 16px;
+            overflow: hidden;
         }
-        .time-chip.active {
-            background-color: #007aff;
+        .category-header {
+            padding: 16px;
+            border-bottom: 1px solid #f0f0f0;
+            font-weight: 600;
+            font-size: 17px;
+        }
+        .category-item {
+            display: flex;
+            padding: 16px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .category-item:last-child {
+            border-bottom: none;
+        }
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 12px;
+            font-size: 18px;
             color: white;
-            border-color: #007aff;
         }
-        .trend-chart {
-            width: 100%;
-            height: 200px;
-            padding: 20px 0;
-            position: relative;
+        .category-info {
+            flex: 1;
         }
-        .trend-chart-line {
-            stroke: #007aff;
-            stroke-width: 2;
-            fill: none;
+        .category-name {
+            font-size: 16px;
+            margin-bottom: 4px;
         }
-        .trend-chart-area {
-            fill: url(#gradient);
-            opacity: 0.2;
+        .category-percent {
+            font-size: 13px;
+            color: #8e8e93;
         }
-        .trend-chart-dot {
-            fill: #007aff;
+        .category-amount {
+            font-weight: 500;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
         }
-        .chart-axis {
+        .progress-container {
+            height: 4px;
+            background-color: #f0f0f0;
+            border-radius: 2px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            border-radius: 2px;
+        }
+        .date-filter {
             display: flex;
             justify-content: space-between;
-            padding: 0 10px;
-            margin-top: 10px;
-            color: #8e8e93;
+            align-items: center;
+            padding: 0 16px;
+            margin-bottom: 16px;
+        }
+        .date-range {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 16px;
+            padding: 6px 12px;
+            font-size: 14px;
+            color: #007aff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .date-range i {
+            margin-right: 6px;
+        }
+        .filter-button {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 16px;
+            padding: 6px 12px;
+            font-size: 14px;
+            color: #007aff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .filter-button i {
+            margin-right: 6px;
+        }
+        .daily-expenses {
+            background-color: white;
+            border-radius: 12px;
+            margin: 16px;
+            overflow: hidden;
+        }
+        .daily-header {
+            padding: 16px;
+            border-bottom: 1px solid #f0f0f0;
+            font-weight: 600;
+            font-size: 17px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .daily-header-action {
+            color: #007aff;
+            font-size: 14px;
+            font-weight: normal;
+        }
+        .daily-item {
+            padding: 16px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .daily-item:last-child {
+            border-bottom: none;
+        }
+        .daily-date {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+        .daily-day {
+            font-weight: 600;
+            font-size: 16px;
+        }
+        .daily-total {
+            font-weight: 500;
+            font-size: 16px;
+        }
+        .expense-list {
+            margin-top: 8px;
+        }
+        .expense-item {
+            display: flex;
+            padding: 8px 0;
+        }
+        .expense-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 12px;
+            font-size: 14px;
+            color: white;
+        }
+        .expense-info {
+            flex: 1;
+        }
+        .expense-name {
+            font-size: 15px;
+            margin-bottom: 2px;
+        }
+        .expense-location {
             font-size: 12px;
+            color: #8e8e93;
+        }
+        .expense-amount {
+            font-weight: 500;
+            font-size: 15px;
         }
     </style>
 </head>
@@ -244,7 +318,7 @@
     <div class="app-header">
         <a href="expense_list.html" class="back-button">
             <i class="fas fa-chevron-left"></i>
-            返回
+            <span>返回</span>
         </a>
         <div class="header-title">消费统计</div>
         <div class="header-actions">
@@ -254,146 +328,217 @@
     
     <!-- 页面内容 -->
     <div class="app-content">
-        <!-- 旅行筛选 -->
+        <!-- 分段控制器 -->
         <div class="segment-control">
-            <div class="segment-item active">日本关西之旅</div>
-            <div class="segment-item">所有旅行</div>
+            <div class="segment-item active">总览</div>
+            <div class="segment-item">分类</div>
+            <div class="segment-item">日期</div>
         </div>
         
-        <!-- 时间筛选 -->
-        <div class="time-filter">
-            <div class="time-chip active">全部</div>
-            <div class="time-chip">今天</div>
-            <div class="time-chip">10月17日</div>
-            <div class="time-chip">10月16日</div>
-            <div class="time-chip">10月15日</div>
-            <div class="time-chip">自定义</div>
+        <!-- 日期筛选 -->
+        <div class="date-filter">
+            <div class="date-range">
+                <i class="far fa-calendar"></i>
+                <span>2023年10月15日 - 10月20日</span>
+            </div>
+            <div class="filter-button">
+                <i class="fas fa-filter"></i>
+                <span>筛选</span>
+            </div>
         </div>
         
-        <!-- 消费总览 -->
+        <!-- 总消费统计 -->
         <div class="stats-card">
             <div class="stats-header">
-                <div class="stats-title">总消费</div>
-                <div class="stats-total">¥15,420</div>
+                <div>
+                    <div class="stats-title">总消费</div>
+                    <div class="stats-subtitle">日本关西之旅</div>
+                </div>
+                <div class="stats-subtitle">6天</div>
+            </div>
+            <div class="stats-amount">¥15,280</div>
+            <div class="stats-info">
+                <div>平均每天: ¥2,547</div>
+                <div>人均: ¥15,280</div>
             </div>
             
-            <!-- 饼图 -->
-            <div class="pie-chart">
-                <svg viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="45" fill="#f8f8f8" />
-                    <!-- 餐饮 23% -->
-                    <path class="pie-segment" d="M50,50 L50,5 A45,45 0 0,1 88.5,27.5 Z" fill="#ff9500" />
-                    <!-- 门票 13% -->
-                    <path class="pie-segment" d="M50,50 L88.5,27.5 A45,45 0 0,1 92.4,65.5 Z" fill="#4cd964" />
-                    <!-- 交通 18% -->
-                    <path class="pie-segment" d="M50,50 L92.4,65.5 A45,45 0 0,1 65.5,92.4 Z" fill="#5ac8fa" />
-                    <!-- 纪念品/购物 46% -->
-                    <path class="pie-segment" d="M50,50 L65.5,92.4 A45,45 0 0,1 5,50 Z" fill="#ff2d55" />
-                    <circle cx="50" cy="50" r="25" fill="white" />
-                </svg>
-            </div>
-            
-            <!-- 图例 -->
-            <div class="legend">
-                <div class="legend-item">
-                    <div class="legend-color" style="background-color: #ff9500;"></div>
-                    <div class="legend-label">餐饮</div>
-                    <div class="legend-value">¥3,600</div>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="background-color: #4cd964;"></div>
-                    <div class="legend-label">门票</div>
-                    <div class="legend-value">¥2,000</div>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="background-color: #5ac8fa;"></div>
-                    <div class="legend-label">交通</div>
-                    <div class="legend-value">¥2,860</div>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="background-color: #ff2d55;"></div>
-                    <div class="legend-label">纪念品/购物</div>
-                    <div class="legend-value">¥7,760</div>
-                </div>
+            <!-- 消费趋势图 -->
+            <div class="chart-container">
+                <div class="chart-bar" style="left: 2%; height: 60%;"></div>
+                <div class="chart-label" style="left: 2%;">15日</div>
+                
+                <div class="chart-bar" style="left: 14%; height: 40%;"></div>
+                <div class="chart-label" style="left: 14%;">16日</div>
+                
+                <div class="chart-bar" style="left: 26%; height: 80%;"></div>
+                <div class="chart-label" style="left: 26%;">17日</div>
+                
+                <div class="chart-bar" style="left: 38%; height: 70%;"></div>
+                <div class="chart-label" style="left: 38%;">18日</div>
+                
+                <div class="chart-bar" style="left: 50%; height: 90%;"></div>
+                <div class="chart-label" style="left: 50%;">19日</div>
+                
+                <div class="chart-bar" style="left: 62%; height: 50%;"></div>
+                <div class="chart-label" style="left: 62%;">20日</div>
             </div>
         </div>
         
-        <!-- 消费趋势 -->
-        <div class="stats-card">
-            <div class="stats-header">
-                <div class="stats-title">消费趋势</div>
+        <!-- 分类消费统计 -->
+        <div class="category-stats">
+            <div class="category-header">消费分类</div>
+            
+            <div class="category-item">
+                <div class="category-icon" style="background-color: #ff9500;">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <div class="category-info">
+                    <div class="category-name">餐饮</div>
+                    <div class="category-percent">35%</div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 35%; background-color: #ff9500;"></div>
+                    </div>
+                </div>
+                <div class="category-amount">¥5,348</div>
             </div>
             
-            <!-- 趋势图 -->
-            <div class="trend-chart">
-                <svg viewBox="0 0 300 100" preserveAspectRatio="none">
-                    <defs>
-                        <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="#007aff" />
-                            <stop offset="100%" stop-color="#ffffff" />
-                        </linearGradient>
-                    </defs>
-                    <polyline class="trend-chart-line" points="0,80 50,60 100,70 150,30 200,50 250,20 300,40" />
-                    <polyline class="trend-chart-area" points="0,80 50,60 100,70 150,30 200,50 250,20 300,40 300,100 0,100" />
-                    <circle class="trend-chart-dot" cx="0" cy="80" r="3" />
-                    <circle class="trend-chart-dot" cx="50" cy="60" r="3" />
-                    <circle class="trend-chart-dot" cx="100" cy="70" r="3" />
-                    <circle class="trend-chart-dot" cx="150" cy="30" r="3" />
-                    <circle class="trend-chart-dot" cx="200" cy="50" r="3" />
-                    <circle class="trend-chart-dot" cx="250" cy="20" r="3" />
-                    <circle class="trend-chart-dot" cx="300" cy="40" r="3" />
-                </svg>
+            <div class="category-item">
+                <div class="category-icon" style="background-color: #5856d6;">
+                    <i class="fas fa-hotel"></i>
+                </div>
+                <div class="category-info">
+                    <div class="category-name">住宿</div>
+                    <div class="category-percent">28%</div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 28%; background-color: #5856d6;"></div>
+                    </div>
+                </div>
+                <div class="category-amount">¥4,278</div>
             </div>
             
-            <!-- X轴标签 -->
-            <div class="chart-axis">
-                <div>10/15</div>
-                <div>10/16</div>
-                <div>10/17</div>
-                <div>10/18</div>
-                <div>10/19</div>
-                <div>10/20</div>
-                <div>10/21</div>
+            <div class="category-item">
+                <div class="category-icon" style="background-color: #5ac8fa;">
+                    <i class="fas fa-train"></i>
+                </div>
+                <div class="category-info">
+                    <div class="category-name">交通</div>
+                    <div class="category-percent">20%</div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 20%; background-color: #5ac8fa;"></div>
+                    </div>
+                </div>
+                <div class="category-amount">¥3,056</div>
+            </div>
+            
+            <div class="category-item">
+                <div class="category-icon" style="background-color: #4cd964;">
+                    <i class="fas fa-ticket-alt"></i>
+                </div>
+                <div class="category-info">
+                    <div class="category-name">门票</div>
+                    <div class="category-percent">12%</div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 12%; background-color: #4cd964;"></div>
+                    </div>
+                </div>
+                <div class="category-amount">¥1,834</div>
+            </div>
+            
+            <div class="category-item">
+                <div class="category-icon" style="background-color: #ff3b30;">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <div class="category-info">
+                    <div class="category-name">购物</div>
+                    <div class="category-percent">5%</div>
+                    <div class="progress-container">
+                        <div class="progress-bar" style="width: 5%; background-color: #ff3b30;"></div>
+                    </div>
+                </div>
+                <div class="category-amount">¥764</div>
             </div>
         </div>
         
-        <!-- 预算执行情况 -->
-        <div class="stats-card">
-            <div class="stats-header">
-                <div class="stats-title">预算执行情况</div>
-                <div class="stats-total">62%</div>
+        <!-- 每日消费明细 -->
+        <div class="daily-expenses">
+            <div class="daily-header">
+                <div>每日消费</div>
+                <div class="daily-header-action">查看全部</div>
             </div>
             
-            <!-- 进度条 -->
-            <div class="w-full h-6 bg-gray-200 rounded-full mb-4">
-                <div class="h-full bg-blue-500 rounded-full" style="width: 62%;"></div>
+            <div class="daily-item">
+                <div class="daily-date">
+                    <div class="daily-day">10月17日 · 星期三</div>
+                    <div class="daily-total">¥3,600</div>
+                </div>
+                
+                <div class="expense-list">
+                    <div class="expense-item">
+                        <div class="expense-icon" style="background-color: #e9f7fe; color: #007aff;">
+                            <i class="fas fa-train"></i>
+                        </div>
+                        <div class="expense-info">
+                            <div class="expense-name">JR往返车票</div>
+                            <div class="expense-location">大阪 - 京都</div>
+                        </div>
+                        <div class="expense-amount">¥1,440</div>
+                    </div>
+                    
+                    <div class="expense-item">
+                        <div class="expense-icon" style="background-color: #f0f8ff; color: #5856d6;">
+                            <i class="fas fa-ticket-alt"></i>
+                        </div>
+                        <div class="expense-info">
+                            <div class="expense-name">金阁寺门票</div>
+                            <div class="expense-location">京都 金阁寺</div>
+                        </div>
+                        <div class="expense-amount">¥400</div>
+                    </div>
+                    
+                    <div class="expense-item">
+                        <div class="expense-icon" style="background-color: #ffeceb; color: #ff3b30;">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="expense-info">
+                            <div class="expense-name">午餐 - 日式套餐</div>
+                            <div class="expense-location">京都站附近</div>
+                        </div>
+                        <div class="expense-amount">¥1,200</div>
+                    </div>
+                </div>
             </div>
             
-            <div class="flex justify-between text-sm text-gray-500">
-                <div>已用：¥15,420</div>
-                <div>总预算：¥25,000</div>
+            <div class="daily-item">
+                <div class="daily-date">
+                    <div class="daily-day">10月16日 · 星期二</div>
+                    <div class="daily-total">¥4,280</div>
+                </div>
+                
+                <div class="expense-list">
+                    <div class="expense-item">
+                        <div class="expense-icon" style="background-color: #f0f8ff; color: #5856d6;">
+                            <i class="fas fa-ticket-alt"></i>
+                        </div>
+                        <div class="expense-info">
+                            <div class="expense-name">大阪城门票</div>
+                            <div class="expense-location">大阪城公园</div>
+                        </div>
+                        <div class="expense-amount">¥600</div>
+                    </div>
+                    
+                    <div class="expense-item">
+                        <div class="expense-icon" style="background-color: #ffeceb; color: #ff3b30;">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="expense-info">
+                            <div class="expense-name">晚餐 - 寿司</div>
+                            <div class="expense-location">道顿崛美食街</div>
+                        </div>
+                        <div class="expense-amount">¥3,680</div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <!-- iOS 导航栏 -->
-    <div class="ios-nav-bar">
-        <a href="home.html" class="nav-item">
-            <i class="fas fa-suitcase"></i>
-            <span>旅行</span>
-        </a>
-        <a href="expense_list.html" class="nav-item active">
-            <i class="fas fa-coins"></i>
-            <span>记账</span>
-        </a>
-        <a href="travel_map.html" class="nav-item">
-            <i class="fas fa-map-marked-alt"></i>
-            <span>地图</span>
-        </a>
-        <a href="profile.html" class="nav-item">
-            <i class="fas fa-user"></i>
-            <span>我的</span>
-        </a>
     </div>
 </body>
 </html>

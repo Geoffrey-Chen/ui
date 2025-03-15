@@ -29,52 +29,44 @@
             z-index: 10;
             font-size: 14px;
         }
-        .ios-nav-bar {
-            height: 83px;
-            background-color: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid #e0e0e0;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            position: sticky;
-            bottom: 0;
-            z-index: 10;
-        }
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #8e8e93;
-            font-size: 10px;
-            padding: 8px 0;
-        }
-        .nav-item.active {
-            color: #007aff;
-        }
-        .nav-item i {
-            font-size: 24px;
-            margin-bottom: 4px;
-        }
         .app-content {
             flex: 1;
             overflow-y: auto;
-            padding-bottom: 83px;
         }
         .app-header {
-            padding: 16px;
+            padding: 0 16px;
+            height: 44px;
             background-color: white;
-            font-weight: 600;
             font-size: 17px;
-            text-align: center;
             border-bottom: 1px solid #e0e0e0;
             position: sticky;
             top: 44px;
             z-index: 9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-title {
+            font-weight: 600;
+            flex: 1;
+            text-align: center;
+        }
+        .header-action {
+            color: #007aff;
+            font-size: 16px;
+        }
+        .back-button {
+            color: #007aff;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+        .back-button i {
+            margin-right: 5px;
         }
         .fab-button {
             position: fixed;
-            bottom: 100px;
+            bottom: 30px;
             right: 20px;
             width: 56px;
             height: 56px;
@@ -83,9 +75,47 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
             color: white;
             font-size: 24px;
+        }
+        .segment-control {
+            display: flex;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            margin: 16px;
+            overflow: hidden;
+        }
+        .segment-item {
+            flex: 1;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 14px;
+            color: #666;
+            cursor: pointer;
+        }
+        .segment-item.active {
+            background-color: white;
+            font-weight: 500;
+            color: #007aff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            margin: 16px;
+            padding: 16px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .card-title {
+            font-weight: 600;
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+        .card-subtitle {
+            color: #8e8e93;
+            font-size: 14px;
+            margin-bottom: 16px;
         }
     </style>
 </head>
@@ -100,28 +130,37 @@
         </div>
     </div>
     
-    <!-- 页面内容 -->
-    <div class="app-content">
-        <!-- 内容将在这里插入 -->
+    <!-- 页面标题 -->
+    <div class="app-header">
+        <a href="#" class="back-button">
+            <i class="fas fa-chevron-left"></i>
+            <span>返回</span>
+        </a>
+        <div class="header-title">页面标题</div>
+        <div class="header-action">
+            <i class="fas fa-ellipsis-h"></i>
+        </div>
     </div>
     
-    <!-- iOS 导航栏 -->
-    <div class="ios-nav-bar">
-        <a href="home.html" class="nav-item active">
-            <i class="fas fa-suitcase"></i>
-            <span>旅行</span>
-        </a>
-        <a href="expense_list.html" class="nav-item">
-            <i class="fas fa-coins"></i>
-            <span>记账</span>
-        </a>
-        <a href="travel_map.html" class="nav-item">
-            <i class="fas fa-map-marked-alt"></i>
-            <span>地图</span>
-        </a>
-        <a href="profile.html" class="nav-item">
-            <i class="fas fa-user"></i>
-            <span>我的</span>
+    <!-- 页面内容 -->
+    <div class="app-content">
+        <!-- 分段控制器示例 -->
+        <div class="segment-control">
+            <div class="segment-item active">选项一</div>
+            <div class="segment-item">选项二</div>
+            <div class="segment-item">选项三</div>
+        </div>
+        
+        <!-- 卡片示例 -->
+        <div class="card">
+            <div class="card-title">卡片标题</div>
+            <div class="card-subtitle">卡片副标题或描述信息</div>
+            <p>卡片内容区域，可以放置各种元素和信息。</p>
+        </div>
+        
+        <!-- 浮动按钮示例 -->
+        <a href="#" class="fab-button">
+            <i class="fas fa-plus"></i>
         </a>
     </div>
 </body>
